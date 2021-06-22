@@ -19,12 +19,12 @@ public class AuthorService implements AuthorDao {
 
 
     @Override
-    public Author searchUser(Long id) {
+    public Author searchAuthor(Long id) {
         return authorRepository.findById(id).get();
     }
 
     @Override
-    public List<Author> searchUsers() {
+    public List<Author> searchAuthors() {
         return authorRepository.findAll();
     }
 

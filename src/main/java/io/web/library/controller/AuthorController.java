@@ -2,27 +2,30 @@ package io.web.library.controller;
 
 import io.web.library.model.Author;
 import io.web.library.service.AuthorService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/search")
+@RequestMapping("/author")
 public class AuthorController {
 
-    @Autowired
+    final
     AuthorService authorService;
 
-    @GetMapping("/authors")
-    public List<Author> searchAuthors(){
-
-        return authorService.searchUsers();
+    public AuthorController(AuthorService authorService) {
+        this.authorService = authorService;
     }
 
-    @GetMapping("/author/{id}")
+    @GetMapping("/searchAuthors")
+    public List<Author> searchAuthors(){
+
+        return authorService.searchAuthors();
+    }
+
+    @GetMapping("/searchAuthor/{id}")
     public Author searchAuthor(@PathVariable Long id){
-        return authorService.searchUser(id);
+        return authorService.searchAuthor(id);
     }
 
 

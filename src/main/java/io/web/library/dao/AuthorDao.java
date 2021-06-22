@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface AuthorDao {
 
-    Author searchUser(Long id);
+    Author searchAuthor(Long id);
 
-    List<Author> searchUsers();
+    List<Author> searchAuthors();
 
     Author createAuthor(Author user);
 
