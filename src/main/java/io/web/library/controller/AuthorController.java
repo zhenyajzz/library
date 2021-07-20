@@ -2,12 +2,13 @@ package io.web.library.controller;
 
 import io.web.library.model.Author;
 import io.web.library.service.AuthorService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/author")
+@Controller
 public class AuthorController {
 
     final
@@ -17,16 +18,40 @@ public class AuthorController {
         this.authorService = authorService;
     }
 
-    @GetMapping("/searchAuthors")
-    public List<Author> searchAuthors(){
+    @GetMapping("/authors")
+    public String searchAuthors(Model model){
+        List<Author> listAuthors = authorService.searchAuthors();
+        model.addAttribute("listAuthors", listAuthors);
 
-        return authorService.searchAuthors();
-    }
-
-    @GetMapping("/searchAuthor/{id}")
-    public Author searchAuthor(@PathVariable Long id){
-        return authorService.searchAuthor(id);
+        return "authors";
     }
 
 
+    @GetMapping("/author/{id}")
+    public String searchAuthor(@PathVariable Long id, Model model) {
+
+        Author author = authorService.searchAuthor(id);
+        model.addAttribute("author",author);
+        return "author";
+    }
+
+    @GetMapping("/author-create")
+    public String createAuthorForm(Author author){
+        return "author-create";
+    }
+
+    @PostMapping("/author-create")
+    public String createAuthor(Author author){
+        authorService.createAuthor(author);
+
+        return "redirect:/authors";
+    }
+
+    @GetMapping("/author-delete/{id}")
+    public String removeAuthorById(@PathVariable Long id){
+
+        authorService.deleteAuthor(id);
+
+        return "redirect:/authors";
+    }
 }
