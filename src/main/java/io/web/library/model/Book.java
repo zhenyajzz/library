@@ -11,14 +11,19 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "title")
-    private String title;
+    @Column(name = "book_name")
+    private String bookName;
 
     @Column(name = "year")
     private String year;
 
+    @Column(name = "price")
+    private String price;
+
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "author_id")
     private Author author;
+
 
     public Long getId() {
         return id;
@@ -28,12 +33,12 @@ public class Book {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getBookName() {
+        return bookName;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
     }
 
     public String getYear() {
@@ -44,11 +49,11 @@ public class Book {
         this.year = year;
     }
 
-    public Author getAuthor() {
-        return author;
+    public String getPrice() {
+        return price;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setPrice(String price) {
+        this.price = price;
     }
 }
