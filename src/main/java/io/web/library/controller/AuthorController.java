@@ -47,6 +47,23 @@ public class AuthorController {
         return "redirect:/authors";
     }
 
+    @GetMapping("/author-update/{id}")
+    public String updateAuthorForm(@PathVariable Long id , Model model){
+
+        Author author = authorService.searchAuthor(id);
+        model.addAttribute("author",author);
+
+        return "author-update";
+    }
+
+    @PostMapping("/author-update")
+    public String updateAuthor(Author author){
+
+        authorService.createAuthor(author);
+
+        return "redirect:/authors";
+    }
+
     @GetMapping("/author-delete/{id}")
     public String removeAuthorById(@PathVariable Long id){
 

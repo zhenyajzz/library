@@ -43,11 +43,4 @@ public class AppController {
         return "register_success";
     }
 
-    @GetMapping("/users")
-    public String listUsers(Model model) {
-        List<User> listUsers = userService.searchUsers();
-        model.addAttribute("listUsers", listUsers);
-
-        return "users";
-    }
 }
