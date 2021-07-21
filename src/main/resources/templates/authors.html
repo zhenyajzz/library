@@ -22,6 +22,7 @@
             <th>Author ID</th>
             <th>First Name</th>
             <th>Last Name</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -29,6 +30,7 @@
             <td th:text="${author.id}">Author ID</td>
             <td th:text="${author.firstName}">First Name</td>
             <td th:text="${author.lastName}">Last Name</td>
+            <td><a th:href="@{author-delete/{id}(id=${author.id})}">Delete</a></td>
         </tr>
         </tbody>
         <h4><a th:href="@{/}">Main page</a></h4>
