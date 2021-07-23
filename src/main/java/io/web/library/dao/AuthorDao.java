@@ -11,9 +11,9 @@ public interface AuthorDao {
 
     List<Author> searchAuthors();
 
-    Author createAuthor(Author user);
+    Author createAuthor(Author author);
 
-    Author updateAuthor(Long id );
+    Author updateAuthor(Long id);
 
     String deleteAuthor(Long id);
 
