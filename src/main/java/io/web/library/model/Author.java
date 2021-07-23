@@ -24,9 +24,6 @@ public class Author {
     @OneToMany(mappedBy = "author")
     private List<Book> books = new ArrayList<>();
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
-    }
 
     public Long getId() {
         return id;
@@ -50,5 +47,13 @@ public class Author {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }

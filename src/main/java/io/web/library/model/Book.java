@@ -56,4 +56,12 @@ public class Book {
     public void setPrice(String price) {
         this.price = price;
     }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
 }

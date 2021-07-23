@@ -47,6 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/users").hasAnyAuthority("ADMIN")
                 .antMatchers("/authors/**").hasAnyAuthority("ADMIN","USER")
                 .antMatchers("/books/**").hasAnyAuthority("ADMIN","USER")
+                .antMatchers("/booksDtoAuthors/**").hasAnyAuthority("ADMIN","USER")
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
