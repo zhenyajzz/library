@@ -57,4 +57,10 @@ public class BookService implements BookDao {
 
         return "Delete book by id: " + id;
     }
+
+    @Override
+    @Transactional
+    public List<Book> findByBookName(String bookName) {
+        return bookRepository.findAllByBookName(bookName);
+    }
 }
