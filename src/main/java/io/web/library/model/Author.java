@@ -1,7 +1,9 @@
 package io.web.library.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,10 +21,9 @@ public class Author {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinTable(name = "authors_books",joinColumns = @JoinColumn(name = "author_id"),
-    inverseJoinColumns = @JoinColumn(name = "book_id"))
-    private Set<Book> books = new HashSet<>();
+    @OneToMany(mappedBy = "author")
+    private List<Book> books = new ArrayList<>();
+
 
     public Long getId() {
         return id;
@@ -48,11 +49,11 @@ public class Author {
         this.lastName = lastName;
     }
 
-    public Set<Book> getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(Set<Book> books) {
+    public void setBooks(List<Book> books) {
         this.books = books;
     }
 }

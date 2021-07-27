@@ -1,5 +1,7 @@
 package io.web.library.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,14 +13,20 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "title")
-    private String title;
+    @Column(name = "book_name")
+    private String bookName;
 
     @Column(name = "year")
     private String year;
 
+    @Column(name = "price")
+    private String price;
+
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "author_id")
     private Author author;
+
 
     public Long getId() {
         return id;
@@ -28,12 +36,12 @@ public class Book {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getBookName() {
+        return bookName;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
     }
 
     public String getYear() {
@@ -42,6 +50,14 @@ public class Book {
 
     public void setYear(String year) {
         this.year = year;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     public Author getAuthor() {
